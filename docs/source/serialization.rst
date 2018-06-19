@@ -557,6 +557,10 @@ without the supporting classes being present on the classpath.  This can be usef
 be able to use reflection over the deserialized data, for scripting languages that run on the JVM, and also for
 ensuring classes not on the classpath can be deserialized without loading potentially malicious code.
 
+.. warning:: The synthesised class will implement the same interfaces as the original. However only those methods which
+   are getters (as defined above) for the serialised fields will be implemented. Accessing any of the other methods will
+   throw an ``java.lang.AbstractMethodError``.
+
 Possible future enhancements include:
 
     #.  Java singleton support.  We will add support for identifying classes which are singletons and identifying the
